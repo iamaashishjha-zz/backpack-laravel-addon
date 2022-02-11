@@ -14,6 +14,8 @@ use Spatie\Permission\Traits\HasRoles;
 // use Backpack\CRUD\app\Models\Traits\CrudTrait;
 // use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use \Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Shankhadev\Bsdate\BsdateController;
+use Shankhadev\Bsdate\BsdateFacade;
 
 class User extends Authenticatable
 {

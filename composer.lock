@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7aa155efeca89d999c68de9b9519f328",
+    "content-hash": "47e62e8858a84f671b343d5007704ea1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3831,6 +3831,70 @@
             "time": "2021-12-04T23:24:31+00:00"
         },
         {
+            "name": "pratiksh/nepalidate",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pratiksh404/nepalidate.git",
+                "reference": "6cce5df77b59ca3a24b092c2b9ce576056f5ade5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pratiksh404/nepalidate/zipball/6cce5df77b59ca3a24b092c2b9ce576056f5ade5",
+                "reference": "6cce5df77b59ca3a24b092c2b9ce576056f5ade5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.4|^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pratiksh\\Nepalidate\\Providers\\NepalidateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Nepalidate": "Pratiksh\\Nepalidate\\Facades\\NepaliDate"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pratiksh\\Nepalidate\\": "src"
+                },
+                "files": [
+                    "src/Helpers/NepaliDateHelper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pratik Shrestha",
+                    "email": "pratikdai404@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package to convert AD to BS that can work with carbon.",
+            "homepage": "https://github.com/pratiksh/nepalidate",
+            "keywords": [
+                "nepalidate",
+                "pratiksh"
+            ],
+            "support": {
+                "issues": "https://github.com/pratiksh404/nepalidate/issues",
+                "source": "https://github.com/pratiksh404/nepalidate/tree/v1.3.0"
+            },
+            "time": "2021-09-15T15:37:19+00:00"
+        },
+        {
             "name": "prologue/alerts",
             "version": "0.4.8",
             "source": {
@@ -4603,6 +4667,50 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "shankhadev/bsdate",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shankhadevpadam/laravelbsdate.git",
+                "reference": "89af634a75e7699c846d815f0134fbc4d93471d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shankhadevpadam/laravelbsdate/zipball/89af634a75e7699c846d815f0134fbc4d93471d5",
+                "reference": "89af634a75e7699c846d815f0134fbc4d93471d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shankhadev\\Bsdate\\": "src/Bsdate/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Padam Shankhadev",
+                    "email": "shankhadev123@gmail.com"
+                }
+            ],
+            "description": "A simple package that convert AD to BS and viceversa.",
+            "keywords": [
+                "Bikramsambat",
+                "Nepali Date"
+            ],
+            "support": {
+                "issues": "https://github.com/shankhadevpadam/laravelbsdate/issues",
+                "source": "https://github.com/shankhadevpadam/laravelbsdate/tree/1.0"
+            },
+            "time": "2017-01-01T04:41:17+00:00"
         },
         {
             "name": "soufiene-slimi/star-field-for-backpack",
@@ -10321,5 +10429,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
