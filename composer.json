@@ -26,7 +26,8 @@
         "pratiksh/nepalidate": "^1.3",
         "shankhadev/bsdate": "^1.0",
         "soufiene-slimi/star-field-for-backpack": "^1.0",
-        "spatie/laravel-sluggable": "^2.6"
+        "spatie/laravel-sluggable": "^2.6",
+        "spatie/laravel-translatable": "^4.6"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

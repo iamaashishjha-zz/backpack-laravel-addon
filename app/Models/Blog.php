@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
+use Spatie\Translatable\HasTranslations;
+
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -16,6 +18,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 class Blog extends Model
 {
     use CrudTrait;
+
+    use HasTranslations;
+
+    // public $translatable = ['name'];
 
     use HasFactory;
 
