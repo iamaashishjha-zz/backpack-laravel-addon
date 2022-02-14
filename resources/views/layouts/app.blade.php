@@ -1,9 +1,19 @@
+@php
+
+use Illuminate\Support\Facades\App;
+
+// $locale = App::currentLocale();
+$locale = App::getLocale();
+
+
+@endphp
+
 <!doctype html>
 {{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
-<html lang="{{ app()->getLocale() }}">
+{{-- <html lang="{{ app()->getLocale() }}"> --}}
 
 
-{{-- <html lang="np"> --}}
+<html lang={{ $locale }}>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,8 +47,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <form action="{{url('/locale')}}" method="post">
+                            @csrf
+                            <select class="form-select" name="locale" onchange="this.form.submit()">
+                                <option value="en" {{ (App::currentLocale() == 'en') ? 'selected' : '' }}>English</option>
+                                <option value="np" {{ (App::currentLocale() == 'np') ? 'selected' : '' }}>नेपाली</option>
+                            </select>
+                        </form>
                     </ul>
+
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -82,5 +100,7 @@
             @yield('content')
         </main>
     </div>
+
+    @yield('script')
 </body>
 </html>

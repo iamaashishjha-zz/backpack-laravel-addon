@@ -60,4 +60,25 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }
+
+    public function map(Request $request)
+    {
+        $this->mapApiRoutes();
+        $this->mapWebRoutes($request);
+    }
+    protected function mapWebRoutes(Request $request)
+    {
+        $locale = null;
+        if (in_array($request->segment(1), config('app.available_locale'))) {
+            $locale = $request->segment(1);
+        }
+
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace,
+            'prefix' => $locale
+        ], function ($router) {
+            require base_path('routes/web.php');
+        });
+    }
 }

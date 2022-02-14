@@ -20,7 +20,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // App::setLocale('en');
     }
 
     /**
@@ -33,6 +32,7 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $date = $user->created_at;
+        $englishDate = $date->format('F d, Y');
         $nepaliDate = toFormattedNepaliDate($date);
 
         // toBS(\Carbon\Carbon::now()); // 2078-4-21
@@ -40,55 +40,19 @@ class HomeController extends Controller
         // toFormattedNepaliDate(\Carbon\Carbon::now()); // २१ साउन २०७८, बिहिवार
 
 
-        return view('home')->with('user', $user)->with('date', $nepaliDate);
+        return view('home')
+            ->with('user', $user)
+            ->with('nepaliDate', $nepaliDate)
+            ->with('englishDate', $englishDate);
     }
 
     public function postChangeLanguage(Request $request)
     {
-        // $rules = [
-        //     'language' => 'in:en,fr' //list of supported languages of your application.
-        // ];
-
-        // $language = Input::get('lang'); //lang is name of form select field.
-
-        // $lannguage = $request->lang;
-
         $validated = $request->validate([
             'lang' => 'required'
         ]);
         $language = $validated['lang'];
         App::setLocale($language);
-        return redirect()->back();
-        // dd($language);
-
-        // if (App::isLocale('en')) {
-        //     App::setLocale($language);
-        //     Alert::success('language changed');
-        // } else {
-        //     App::setLocale('en');
-        //     Alert::success('Default Language is English');
-        // }
-        // return redirect()->back();
-
-
-
-        // $validator = Validator::make(compact($language), $rules);
-
-        // if ($validator->passes()) {
-        //     Session::put('language', $language);
-        //     App::setLocale($language);
-        // } else {/**/
-        // }
-    }
-
-    public function langChange($locale)
-    {
-        # code...
-        app()->setLocale($locale);
-        session()->put(
-            'locale',
-            $locale
-        );
         return redirect()->back();
     }
 }

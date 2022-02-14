@@ -90,10 +90,9 @@ return [
 | List all locales that your application works with
 |
 */
-    'available_locales' => [
+    'available_locale' => [
         'English' => 'en',
         'Nepali' => 'np',
-        'French' => 'fr',
     ],
 
     /*
