@@ -19,7 +19,6 @@ class Blog extends Model
 {
     use CrudTrait;
 
-    use HasTranslations;
 
     // public $translatable = ['name'];
 

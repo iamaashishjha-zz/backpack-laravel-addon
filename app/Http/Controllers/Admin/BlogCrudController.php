@@ -88,7 +88,8 @@ class BlogCrudController extends CrudController
                 'name'      => 'blogTags', // the method that defines the relationship in your Model
                 'entity'    => 'blogTags', // the method that defines the relationship in your Model
                 'attribute' => 'name', // foreign key attribute that is shown to user
-                'model'     => 'App\Models\BlogTag', // foreign key model
+                'model'     => 'App\Models\BlogTag',
+
             ],
             [
                 'label'     => 'Category', // Table column heading
@@ -148,22 +149,33 @@ class BlogCrudController extends CrudController
     {
         CRUD::setValidation(BlogRequest::class);
 
+        $this->crud->enableTabs();
+        $this->crud->enableHorizontalTabs();
+
+        $this->crud->setTitle('Create New Blog', 'create'); // set the Title for the create action
+        $this->crud->setHeading('New Blog', 'create'); // set the Heading for the create action
+        $this->crud->setSubheading('Create new blog Posts', 'create'); // set the Subheading for the create action
+
+
         $arr = [
             [
                 'name' => 'title',
                 'label' => 'Blog Title',
-                'type' => 'text'
+                'type' => 'text',
+                'tab' => 'Blog'
             ],
 
             [
                 'name' => 'description',
                 'label' => 'Blog Description',
-                'type' => 'text'
+                'type' => 'text',
+                'tab' => 'Blog'
             ],
             [
                 'name'  => 'content',
                 'label' => 'Blog Content',
-                'type'  => 'wysiwyg'
+                'type'  => 'wysiwyg',
+                'tab' => 'Blog'
             ],
             [
                 'label' => "Image",
@@ -171,6 +183,7 @@ class BlogCrudController extends CrudController
                 'type' => 'image',
                 'crop' => true, // set to true to allow cropping, false to disable
                 'aspect_ratio' => 1,
+                'tab' => 'Others'
             ],
             [
                 'label'     => "Category",
@@ -189,10 +202,12 @@ class BlogCrudController extends CrudController
                         // ->where('depth', 1)
                         ->get();
                 }),
+                'tab' => 'Others',
             ],
             [
                 'name' => 'blogTags',
                 'type' => 'relationship',
+                'tab' => 'Others',
             ],
 
             [
@@ -226,11 +241,13 @@ class BlogCrudController extends CrudController
                 'checked_color' => '#ffc700', // (optional) the default value is #ffc700
                 'hover_color' => '#c59b08', // (optional) the default value is #c59b08
             ],
+            'tab' => 'Others',
         ]);
         $this->crud->addField([
             'name' => 'signature',
             'label' => 'Please sign here',
             'type' => 'signature',
+            'view_namespace' => 'signature-field-for-backpack::fields',
             'attributes' => [
                 // 'placeholder' => 'Some text when empty',
                 'class'       => 'form-control',
@@ -239,7 +256,15 @@ class BlogCrudController extends CrudController
             ], // change the HTML attributes of your input
             'wrapper'   => [
                 'class'      => 'form-group col-md-12 col-lg-6'
-            ]
+            ],
+            'tab' => 'Others',
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'title',
+            'label' => 'Blog Title',
+            'type' => 'text',
+            'tab' => 'Blog'
         ]);
         // dd(BlogRequest::class->id);
         /**

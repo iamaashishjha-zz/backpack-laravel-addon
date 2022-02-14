@@ -7,7 +7,6 @@
     <title>{{ $page->title }}</title>
 </head>
 <body>
-    {{-- {!! $page->content !!} --}}
     {{ $page->content }}
 </body>
 </html>
