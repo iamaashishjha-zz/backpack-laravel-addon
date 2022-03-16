@@ -23,11 +23,13 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "league/omnipay": "^3.2",
         "pratiksh/nepalidate": "^1.3",
         "shankhadev/bsdate": "^1.0",
         "soufiene-slimi/star-field-for-backpack": "^1.0",
         "spatie/laravel-sluggable": "^2.6",
-        "spatie/laravel-translatable": "^4.6"
+        "spatie/laravel-translatable": "^4.6",
+        "sudiptpa/omnipay-esewa": "^1.0"
     },
     "require-dev": {
         "backpack/generators": "^3.1",

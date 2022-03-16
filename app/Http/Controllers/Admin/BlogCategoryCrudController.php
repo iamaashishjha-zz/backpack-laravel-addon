@@ -44,6 +44,24 @@ class BlogCategoryCrudController extends CrudController
         CRUD::column('name');
         CRUD::column('created_at');
         CRUD::column('updated_at');
+        $this->crud->addFilter(
+            [
+                'name'  => 'status',
+                'type'  => 'select2',
+                'label' => 'Status'
+            ],
+            function () {
+                return [
+                    1 => 'In stock',
+                    2 => 'In provider stock',
+                    3 => 'Available upon ordering',
+                    4 => 'Not available',
+                ];
+            },
+            function ($value) { // if the filter is active
+                // $this->crud->addClause('where', 'status', $value);
+            }
+        );
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

@@ -35,7 +35,7 @@ $locale = App::getLocale();
 </head>
 <body>
     <div id="app">
-        {{-- @include('partials.appNav') --}}
+        {{--  @include('partials.appNav')  --}}
 
         @include('partials.homeNavbar')
 

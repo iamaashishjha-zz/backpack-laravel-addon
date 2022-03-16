@@ -82,4 +82,40 @@ class CategoryCrudController extends CrudController
         CRUD::set('reorder.label', 'name');
         CRUD::set('reorder.max_level', 2);
     }
+
+    public function filters()
+    {
+        $selectFilter = [
+            [
+                'name'  => 'status',
+                'type'  => 'select2',
+                'label' => 'Status'
+            ], function () {
+                return [
+                    1 => 'In stock',
+                    2 => 'In provider stock',
+                    3 => 'Available upon ordering',
+                    4 => 'Not available',
+                ];
+            }, function ($value) { // if the filter is active
+                $this->crud->addClause('where', 'status', $value);
+            }
+        ];
+        $modelFilter = [
+            [
+                'name'  => 'status',
+                'type'  => 'select2',
+                'label' => 'Status'
+            ], function () {
+                return [
+                    1 => 'In stock',
+                    2 => 'In provider stock',
+                    3 => 'Available upon ordering',
+                    4 => 'Not available',
+                ];
+            }, function ($value) { // if the filter is active
+                // $this->crud->addClause('where', 'status', $value);
+            }
+        ];
+    }
 }

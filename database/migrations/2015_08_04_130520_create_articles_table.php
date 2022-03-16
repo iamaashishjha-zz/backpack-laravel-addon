@@ -25,6 +25,8 @@ class CreateArticlesTable extends Migration
             $table->boolean('featured')->default(FALSE);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('category_id')->references('id')->on('category');
         });
     }
 

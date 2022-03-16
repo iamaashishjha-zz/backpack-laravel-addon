@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\BlogTagRequest;
+use App\Http\Requests\QuaterYearRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class BlogTagCrudController
+ * Class QuaterYearCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class BlogTagCrudController extends CrudController
+class QuaterYearCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class BlogTagCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\BlogTag::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/blog-tag');
-        CRUD::setEntityNameStrings('blog tag', 'blog tags');
+        CRUD::setModel(\App\Models\QuaterYear::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/quater-year');
+        CRUD::setEntityNameStrings('quater year', 'quater years');
     }
 
     /**
@@ -40,28 +40,6 @@ class BlogTagCrudController extends CrudController
     protected function setupListOperation()
     {
 
-        CRUD::column('id');
-        CRUD::column('name');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-        $this->crud->addFilter(
-            [
-                'name'  => 'status',
-                'type'  => 'select2',
-                'label' => 'Status'
-            ],
-            function () {
-                return [
-                    1 => 'In stock',
-                    2 => 'In provider stock',
-                    3 => 'Available upon ordering',
-                    4 => 'Not available',
-                ];
-            },
-            function ($value) { // if the filter is active
-                // $this->crud->addClause('where', 'status', $value);
-            }
-        );
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -78,29 +56,22 @@ class BlogTagCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(BlogTagRequest::class);
+        CRUD::setValidation(QuaterYearRequest::class);
 
-
-        $this->crud->addField([
-            'name' => 'name',
-            'type' => 'text',
-            'label' => "Enter Tag name"
-        ]);
-        // CRUD::field('created_by')->type('text')->model('App\Models\User')->attribute('name')->entity('user');
-        // CRUD::field('created_by')->type('hidden')->attributes(['disabled' => 'disabled'])->model('App\Models\User')->attribute('name')->entity('user');
-        // CRUD::field('created_by')->type('select2')->attributes(['disabled' => 'disabled'])->model('App\Models\User')->attribute('name')->entity('user');
-        // $this->crud->addField([
-        //     'label' => "Created By",
-        //     'type' => "select",
-        //     'name' => 'created_by',
-        //     'entity' => 'user',
-        //     'attribute' => 'name',
-        //     'model' => "App\Models\BlogTag",
-        // ]);
-        // // 1-n relationship
-
-
-
+        $fields = [
+            [
+                'name'  => 'from_date', // The db column name
+                'label' => 'Tag Name', // Table column heading
+                'type'  => 'date',
+                // 'format' => 'l j F Y', // use something else than the base.default_date_format config value
+            ],
+            [
+                'name'  => 'to_date', // The db column name
+                'label' => 'Tag Name', // Table column heading
+                'type'  => 'date',
+                // 'format' => 'l j F Y', // use something else than the base.default_date_format config value
+            ],
+        ];
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
